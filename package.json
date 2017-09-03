@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "dev": "budo src/index.jsx:bundle.js --pushstate --dir=public --live -- -t babelify -g unassertify -dv",
+    "preversion": "npm run lint && npm run deps && npm test",
+    "postversion": "git push && git push --tags",
+    "lint": "eslint .",
+    "deps": "dependency-check package.json && dependency-check package.json --unused --entry test/*.js -i dependency-check -i eslint -i eslint-config-minlint -i tap-spec",
+    "test": "tape test/*.js | tap-spec"
+  },
+  "dependencies": {
+    "preact": "^8.2.5",
+    "preact-compat": "^3.17.0"
+  },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^2.7.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7.3.0",
+    "budo": "^10.0.4",
+    "bundle-collapser": "^1.3.0",
+    "dependency-check": "^2.9.1",
+    "eslint": "^4.6.0",
+    "eslint-config-minlint": "^2.0.0",
+    "eslint-plugin-react": "^7.3.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.8.0",
+    "unassertify": "^2.0.4"
+  }
+}
